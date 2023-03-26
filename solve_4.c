@@ -30,7 +30,7 @@ int to_uppercase(char *str)
     char *ptr = str;
     int code;
 
-    for (int i = 0; i < get_len(str); i++)
+    while (*ptr)
     {
         if (*ptr >= 97 && *ptr <= 122)
         {
