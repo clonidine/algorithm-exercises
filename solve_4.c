@@ -30,13 +30,11 @@ int to_uppercase(char *str)
     char *ptr = str;
     int code;
 
-    while (*ptr)
+    while (*ptr && *ptr >= 97 && *ptr <= 122)
     {
-        if (*ptr >= 97 && *ptr <= 122)
-        {
-            code = (unsigned char) *ptr;
-            *ptr = code - 32;
-        }
+
+        code = (unsigned char) *ptr;
+        *ptr = code - 32;
 
         ptr++;
     }
