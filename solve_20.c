@@ -18,14 +18,8 @@ int is_factor(int n, size_t arr_size, int target[])
         
         index++;
     }
-
-    if (factors == arr_size)
-    {
-        return 1;
-    } else
-    {
-        return 0;
-    }
+    
+    return factors == arr_size;
 }
 
 int getTotalX(int a_count, int* a, int b_count, int* b) 
