@@ -1,4 +1,6 @@
-// HackerRank Algorithm Challenge: Subarray Division
+// Website: HackerRank
+// Topic: Problem Solving
+// Challenge: Subarray Division
 // Date: 05/12/23
 // Author: Migx3
 
