@@ -8,14 +8,11 @@ int birthday(int s_count, const int *s, int d, int m) {
     int divided = 0;
 
     int sum = 0;
-    unsigned int index;
 
     for (int i = 0; i < s_count; i++) {
-        index = i;
 
-        for (unsigned int j = 0; j < m; j++) {
-            sum += s[index];
-            index++;
+        for (unsigned int j = i; j < m; j++) {
+            sum += s[j];
         }
 
         if (sum == d) {
