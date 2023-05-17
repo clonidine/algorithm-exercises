@@ -31,15 +31,14 @@ fn day_of_programmer(year: i32) -> String {
 
     let programmer_day = 256;
 
-    let mut sum = programmer_day - month_days.iter().sum::<i32>();
+    let mut programmer_day_during_year = programmer_day - month_days.iter().sum::<i32>();
 
     let gregorian_calendar = 1918;
 
     if year == gregorian_calendar {
-        sum += sum
+        programmer_day_during_year *= 2;
     }
-
-    let programmer_day_during_year = sum;
+    
     let programmer_month = 9;
 
     let date_formatted: String = format!("{programmer_day_during_year}.0{programmer_month}.{year}");
