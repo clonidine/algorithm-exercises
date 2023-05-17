@@ -9,8 +9,9 @@ fn get_month_days(year: i32) -> Vec<i32> {
     let mut month_days = vec![31, 31, 30, 31, 30, 31, 31];
     
     let divisible_by_4 = year % 4 == 0;
+    let gregorian_calendar_system = 1918;
 
-    let february_days = if year > 1918 {
+    let february_days = if year > gregorian_calendar_system {
         
         let not_divisible_by_100 = year % 100 != 0;
         let divisible_by_400 = year % 400 == 0;
