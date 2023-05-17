@@ -5,21 +5,23 @@
 // Author: Migx3
 
 fn bon_appetit(bill: &[i32], k: i32, b: i32) {
+    
+    let total = bill.iter().enumerate()
+    .filter(|&(i, _)| i != k.try_into().unwrap())
+    .map(|(_, &item)| item)
+    .sum::<i32>() / 2;
 
-    let mut total: i32 = 0;
+    let correct_value = b == total;
 
-    for i in 0..bill.len() {
-        if i != k as usize {
-            total += bill[i];
+    match correct_value {
+        
+        true =>  {
+            println!("Bon Appetit")
+        },
+
+        false => {
+            let difference = b - total;
+            println!("{}", difference)
         }
-    }
-
-    total /= 2;
-
-    if b != total {
-        let difference = b - total;
-        println!("{}", difference)
-    } else {
-        println!("Bon Appetit")
     }
 }
