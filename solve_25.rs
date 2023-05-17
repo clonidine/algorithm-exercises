@@ -15,7 +15,7 @@ fn get_month_days(year: i32) -> Vec<i32> {
     let divisible_by_4 = year % 4 == 0;
     let gregorian_calendar_system = 1918;
 
-    let february;
+    let february_days;
     
     if year > gregorian_calendar_system  {
 
@@ -23,23 +23,23 @@ fn get_month_days(year: i32) -> Vec<i32> {
         let not_divisible_by_100 = year % 100 != 0;
         
         if divisible_by_400 || divisible_by_4 && not_divisible_by_100 {
-            february = 29;
+            february_days = 29;
         }
         
         else {
-            february = 28;
+            february_days = 28;
         }
     } 
     
     else if divisible_by_4 {
-        february = 29;
+        february_days = 29;
     } 
     
     else {
-        february = 28;
+        february_days = 28;
     }
 
-    month_days.push(february);
+    month_days.push(february_days);
 
     month_days
 }
