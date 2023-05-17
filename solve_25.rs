@@ -12,10 +12,10 @@ fn get_month_days(year: i32) -> Vec<i32> {
 
     let february_days = if year > 1918 {
         
-        let divisible_by_100 = year % 100 == 0;
+        let not_divisible_by_100 = year % 100 != 0;
         let divisible_by_400 = year % 400 == 0;
 
-        divisible_by_4 && (!divisible_by_100 || divisible_by_400)
+        divisible_by_400 || divisible_by_4 && not_divisible_by_100
     } else {
         divisible_by_4
     };
