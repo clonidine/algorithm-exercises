@@ -4,49 +4,48 @@
 // Date: 05/16/23
 // Author: Migx3
 
-fn get_days(year: i32) -> Vec<i32> {
+fn get_month_days(year: i32) -> Vec<i32> {
 
-    let mut days: Vec<i32> = vec!
+    let mut month_days = vec!
     [
         31, 31, 30, 31, 30, 31, 31
     ];
 
-    if year > 1918 {
-        if year % 400 == 0 || year % 4 == 0 && year % 100 != 0 {    
-            days.push(29);
-        } else {
-            days.push(28);
-        }
+    let divisible_by_400 = year % 400 == 0;
+    let divisible_by_4 = year % 4 == 0;
+    let not_divisible_by_100 = year % 100 != 0;
+
+    if divisible_by_400 || divisible_by_4 && not_divisible_by_100 || divisible_by_4 {
+        month_days.push(29);
     } else {
-        if year % 4 == 0 {
-            days.push(29)
-        } else {
-            days.push(28)
-        }
+        month_days.push(28)
     }
 
-    days
+    month_days
 }
 
 fn day_of_programmer(year: i32) -> String {
-    let days: Vec<i32> = get_days(year);
+    let days = get_month_days(year);
 
-    let mut sum: i32 = 0;
+    let mut sum = 0;
 
     for day in days {
         sum += day;
     }
 
-    sum = 256 - sum;
+    let day_of_programmer = 256;
+    let gregorian_calendar = 1918;
+    
+    sum = day_of_programmer - sum;
 
-    if year == 1918 {
+    if year == gregorian_calendar {
         sum += sum
     }
 
-    let day: i32 = sum;
-    let month: i32 = 9;
+    let programmer_day = sum;
+    let programmer_month = 9;
 
-    let format: String = format!("{day}.0{month}.{year}");
+    let date_formatted: String = format!("{programmer_day}.0{programmer_month}.{year}");
 
-    format
+    date_formatted
 }
