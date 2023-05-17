@@ -5,41 +5,22 @@
 // Author: Migx3
 
 fn get_month_days(year: i32) -> Vec<i32> {
-
-    let mut month_days = vec!
-    [
-        31, 31, 30, 31, 30, 31, 31
-    ];
-
-
+    
+    let mut month_days = vec![31, 31, 30, 31, 30, 31, 31];
+    
     let divisible_by_4 = year % 4 == 0;
-    let gregorian_calendar_system = 1918;
 
-    let february_days;
-    
-    if year > gregorian_calendar_system  {
-
+    let february_days = if year > 1918 {
+        
+        let divisible_by_100 = year % 100 == 0;
         let divisible_by_400 = year % 400 == 0;
-        let not_divisible_by_100 = year % 100 != 0;
-        
-        if divisible_by_400 || divisible_by_4 && not_divisible_by_100 {
-            february_days = 29;
-        }
-        
-        else {
-            february_days = 28;
-        }
-    } 
-    
-    else if divisible_by_4 {
-        february_days = 29;
-    } 
-    
-    else {
-        february_days = 28;
-    }
 
-    month_days.push(february_days);
+        divisible_by_4 && (!divisible_by_100 || divisible_by_400)
+    } else {
+        divisible_by_4
+    };
+
+    month_days.push(if february_days { 29 } else { 28 });
 
     month_days
 }
