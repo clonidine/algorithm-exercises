@@ -14,10 +14,23 @@ fn get_month_days(year: i32) -> Vec<i32> {
     let divisible_by_400 = year % 400 == 0;
     let divisible_by_4 = year % 4 == 0;
     let not_divisible_by_100 = year % 100 != 0;
-
-    if divisible_by_400 || divisible_by_4 && not_divisible_by_100 || divisible_by_4 {
-        month_days.push(29);
-    } else {
+    
+    if year > 1918  {
+        
+        if divisible_by_400 || divisible_by_4 && not_divisible_by_100 {
+            month_days.push(29);
+        }
+        
+        else {
+            month_days.push(28)
+        }
+    } 
+    
+    else if divisible_by_4 {
+        month_days.push(29)
+    } 
+    
+    else {
         month_days.push(28)
     }
 
@@ -25,27 +38,22 @@ fn get_month_days(year: i32) -> Vec<i32> {
 }
 
 fn day_of_programmer(year: i32) -> String {
-    let days = get_month_days(year);
+    let month_days = get_month_days(year);
 
-    let mut sum = 0;
+    let programmer_day = 256;
 
-    for day in days {
-        sum += day;
-    }
+    let mut sum = programmer_day - month_days.iter().sum::<i32>();
 
-    let day_of_programmer = 256;
     let gregorian_calendar = 1918;
-    
-    sum = day_of_programmer - sum;
 
     if year == gregorian_calendar {
         sum += sum
     }
 
-    let programmer_day = sum;
+    let programmer_day_during_year = sum;
     let programmer_month = 9;
 
-    let date_formatted: String = format!("{programmer_day}.0{programmer_month}.{year}");
+    let date_formatted: String = format!("{programmer_day_during_year}.0{programmer_month}.{year}");
 
     date_formatted
 }
