@@ -12,7 +12,7 @@ fn sock_merchant(n: i32, ar: &[i32]) -> i32 {
 
     let n = n as usize;
 
-    let mut test = false;
+    let mut modified = false;
 
     for mut i in 0..n {
 
@@ -22,9 +22,9 @@ fn sock_merchant(n: i32, ar: &[i32]) -> i32 {
 
         for mut j in (*ptr) + 1..n {
             
-            if test {
+            if modified {
                 j = *ptr + 1;
-                test = false;
+                modified = false;
             }
 
             let number_2 = ar[j];
@@ -44,21 +44,11 @@ fn sock_merchant(n: i32, ar: &[i32]) -> i32 {
                     
                     pairs += 1;
 
-                    test = true;
+                    modified = true;
                 }
             }
         }
     }
 
     pairs
-}
-
-fn main() {
-    let ar = [6, 5, 2, 3, 5, 2, 2, 1, 1, 5, 1, 3, 3, 3, 5];
-
-    let n = ar.len().try_into().unwrap();
-
-    let pairs = sock_merchant(n, &ar);
-
-    println!("Pairs: {pairs}");
 }
